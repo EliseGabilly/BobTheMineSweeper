@@ -1,5 +1,6 @@
 package application;
 
+import demineur.Jeu;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -7,13 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -41,7 +36,8 @@ public class PageAccueil {
 		btnPlay.setMaxWidth(300);
 		btnPlay.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {
-		    	pStage.setScene(PageJeu.makeSceneJeu(pStage, 10, 7));
+		    	Jeu unJeu = new Jeu();
+		    	pStage.setScene(PageJeu.makeSceneJeu(pStage, unJeu));
 		    }
 		});
 		vBox.getChildren().add(btnPlay);

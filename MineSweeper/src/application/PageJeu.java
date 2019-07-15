@@ -22,65 +22,66 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class PageJeu {
-	
+
 	static Jeu monJeu;
 	static Button[][] tabBtn;
-	
-	public static Scene makeSceneJeu(Stage pStage, int tX, int tY) {
-		
-		monJeu = new Jeu(tX, tY);
-		
-        //creer une scene avec top,right,center,left,bottom
-        BorderPane border = new BorderPane();
+
+	public static Scene makeSceneJeu(Stage pStage, Jeu unJeu) {
+
+		monJeu = unJeu;
+
+		// creer une scene avec top,right,center,left,bottom
+		BorderPane border = new BorderPane();
 		Scene s = new Scene(border, Main.lX, Main.lY);
-		
-        //remplit le top avec un layout horizontal titre et btn menu
-        border.setTop(addTop(pStage));
-        //recupere 15,60et25% de la taille de la fenetre
-        int size15=Math.toIntExact(Math.round(border.getWidth()*0.15));
-        int size60=Math.toIntExact(Math.round(border.getWidth()*0.60));
-        int size25=Math.toIntExact(Math.round(border.getWidth()*0.25));
-        //remplit la gauche avec un layout vertical timer, compte bombe
-        border.setLeft(addLeft(size15));
-        //remplit le centre avec une grille pour jouer
-        border.setCenter(addGrid(size60));
-        //remplit la droite avec img Bob, replay
-        border.setRight(addRight(size25, pStage));
+
+		// remplit le top avec un layout horizontal titre et btn menu
+		border.setTop(addTop(pStage));
+		// recupere 15,60et25% de la taille de la fenetre
+		int size15 = Math.toIntExact(Math.round(border.getWidth() * 0.15));
+		int size60 = Math.toIntExact(Math.round(border.getWidth() * 0.60));
+		int size25 = Math.toIntExact(Math.round(border.getWidth() * 0.25));
+		// remplit la gauche avec un layout vertical timer, compte bombe
+		border.setLeft(addLeft(size15));
+		// remplit le centre avec une grille pour jouer
+		border.setCenter(addGrid(size60));
+		// remplit la droite avec img Bob, replay
+		border.setRight(addRight(size25, pStage));
 
 		return s;
 
-    }//public void start(Stage primaryStage)
+	}// public void start(Stage primaryStage)
 
-    public static HBox addTop(Stage pStage) {   
-        HBox hBox = new HBox();   
+	public static HBox addTop(Stage pStage) {
+		HBox hBox = new HBox();
 
 		Button btnMenu = new Button("Menu");
 		btnMenu.setStyle("-fx-background-color: #C0C0F0;");
 		btnMenu.setMinWidth(100);
 		btnMenu.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
-		    	pStage.setScene(PageAccueil.makeSceneAccueil(pStage));
-		    }
+			@Override
+			public void handle(ActionEvent e) {
+				pStage.setScene(PageAccueil.makeSceneAccueil(pStage));
+			}
 		});
-		
+
 		Label titre = new Label("Time to play with Bob");
-	    titre.setTextFill(Color.web("#FFFFFF"));
-	    titre.setFont(new Font("Script", 20));
+		titre.setTextFill(Color.web("#FFFFFF"));
+		titre.setFont(new Font("Script", 20));
 		hBox.getChildren().add(btnMenu);
 		hBox.getChildren().add(titre);
-	    hBox.setPadding(new Insets(20, 20, 20, 20));
-	    hBox.setSpacing(20);
-	    hBox.setStyle("-fx-background-color: #8E9ABD;");
-		
+		hBox.setPadding(new Insets(20, 20, 20, 20));
+		hBox.setSpacing(20);
+		hBox.setStyle("-fx-background-color: #8E9ABD;");
+
 		return hBox;
-    }//public HBox addTop()
-    
-    public static VBox addLeft(int size) {   
-        VBox vBox = new VBox();     
-        vBox.setPadding(new Insets(10, 20, 10, 20));
-        vBox.setSpacing(20);
-        vBox.setMaxWidth(size);
-        vBox.setStyle("-fx-background-color: #C0C0F0;");
+	}// public HBox addTop()
+
+	public static VBox addLeft(int size) {
+		VBox vBox = new VBox();
+		vBox.setPadding(new Insets(10, 20, 10, 20));
+		vBox.setSpacing(20);
+		vBox.setMaxWidth(size);
+		vBox.setStyle("-fx-background-color: #C0C0F0;");
 
 		Label timer = new Label("Timer : ");
 		timer.setWrapText(true);
@@ -91,94 +92,95 @@ public class PageJeu {
 		vBox.getChildren().add(timer);
 		vBox.getChildren().add(countBombe);
 		vBox.getChildren().add(resteBombe);
-		
+
 		return vBox;
-    }//public VBox addLeft()
-    
-    public static GridPane addGrid(int size) {  
-        GridPane gridPane = new GridPane();
-        gridPane.setAlignment(Pos.TOP_CENTER);
-        gridPane.setPadding(new Insets(10, 20, 10, 20));
-        gridPane.setMaxWidth(size); 
-        //int s=Math.min(Math.toIntExact(Math.round(size/nbRow)),
-        //		Math.toIntExact(Math.round(gridPane.getHeight()/nbRow)));
-        int s=Math.toIntExact(Math.round(size/monJeu.tailleX));
-        tabBtn=new Button[monJeu.tailleY][monJeu.tailleX];
-        
-		for (int row=0; row<monJeu.tailleY; row++) { 
-			for (int col=0; col<monJeu.tailleX; col++) {
+	}// public VBox addLeft()
+
+	public static GridPane addGrid(int size) {
+		GridPane gridPane = new GridPane();
+		gridPane.setAlignment(Pos.TOP_CENTER);
+		gridPane.setPadding(new Insets(10, 20, 10, 20));
+		gridPane.setMaxWidth(size);
+		// int s=Math.min(Math.toIntExact(Math.round(size/nbRow)),
+		// Math.toIntExact(Math.round(gridPane.getHeight()/nbRow)));
+		int s = Math.toIntExact(Math.round(size / monJeu.tailleX));
+		tabBtn = new Button[monJeu.tailleY][monJeu.tailleX];
+
+		for (int row = 0; row < monJeu.tailleY; row++) {
+			for (int col = 0; col < monJeu.tailleX; col++) {
 				Button btn = new Button(monJeu.grid.UneCaseState(row, col));
-				tabBtn[row][col]=btn;
+				tabBtn[row][col] = btn;
 				gridPane.add(btn, col, row, 1, 1);
-				final int r=row;
-				final int c=col;
-                btn.setPrefSize(s,s);
+				final int r = row;
+				final int c = col;
+				btn.setPrefSize(s, s);
 				btn.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-		            @Override
-		            public void handle(MouseEvent event) {
-		            	System.out.println("action en "+Integer.toString(c)+" "+Integer.toString(r));
-		                if (monJeu.gameOn) {
-			            	if(event.getButton() == MouseButton.SECONDARY){
-			                	monJeu.Clic(c, r, false);
-			                } else {
-			                	monJeu.Clic(c, r, true);
-			                }
-			            	Refresh();
-		                } else {
-		                	System.out.println("partie deja fini");
-		                }
-		            }
-		        });
-		    }	
-        }
+					@Override
+					public void handle(MouseEvent event) {
+						System.out.println("action en " + Integer.toString(c) + " " + Integer.toString(r));
+						if (monJeu.gameOn) {
+							if (event.getButton() == MouseButton.SECONDARY) {
+								monJeu.Clic(c, r, false);
+							} else {
+								monJeu.Clic(c, r, true);
+							}
+							Refresh();
+						} else {
+							System.out.println("partie deja fini");
+						}
+					}
+				});
+			}
+		}
 		return gridPane;
-    }//public GridPane addGrid()
+	}// public GridPane addGrid()
 
-    public static VBox addRight(int size, Stage pStage) {   
-        VBox vBox = new VBox();    
-        vBox.setPadding(new Insets(10, 20, 10, 20));
-        vBox.setSpacing(20);
-        vBox.setMaxWidth(size);
-        vBox.setStyle("-fx-background-color: #C0C0F0;");
+	public static VBox addRight(int size, Stage pStage) {
+		VBox vBox = new VBox();
+		vBox.setPadding(new Insets(10, 20, 10, 20));
+		vBox.setSpacing(20);
+		vBox.setMaxWidth(size);
+		vBox.setStyle("-fx-background-color: #C0C0F0;");
 
-        
-        // Load an image in the background      
-        String imageUrl = "file:bob.png";
-        Image image = new Image(imageUrl,160,160,false,true);
-        // Create the ImageView
-        ImageView imageView = new ImageView(image);
-        // Add Children to the HBox
-        vBox.getChildren().add(imageView);
-        
+		// Load an image in the background
+		String imageUrl = "file:bob.png";
+		Image image = new Image(imageUrl, 160, 160, false, true);
+		// Create the ImageView
+		ImageView imageView = new ImageView(image);
+		// Add Children to the HBox
+		vBox.getChildren().add(imageView);
+
 		Button btnReplay = new Button("Replay");
 		btnReplay.setStyle("-fx-background-color: #8E9ABD;");
 		btnReplay.setMaxWidth(size);
 		btnReplay.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
-		    	pStage.setScene(PageJeu.makeSceneJeu(pStage, monJeu.tailleX, monJeu.tailleY));
-		    }
+			@Override
+			public void handle(ActionEvent e) {
+				pStage.setScene(PageJeu.makeSceneJeu(pStage, monJeu));
+			}
 		});
 		vBox.getChildren().add(btnReplay);
-		
+
 		Button btnBack = new Button("Back to the menu");
 		btnBack.setStyle("-fx-background-color: #8E9ABD;");
 		btnBack.setMaxWidth(size);
 		btnBack.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
-		    	pStage.setScene(PageAccueil.makeSceneAccueil(pStage));
-		    }
+			@Override
+			public void handle(ActionEvent e) {
+				pStage.setScene(PageAccueil.makeSceneAccueil(pStage));
+			}
 		});
 		vBox.getChildren().add(btnBack);
 
 		return vBox;
-    }//public VBox addRight()
-    
-    private static void Refresh() {
-    	for (int row=0; row<monJeu.tailleY; row++) { 
-			for (int col=0; col<monJeu.tailleX; col++) {
+	}// public VBox addRight()
+
+	private static void Refresh() {
+		for (int row = 0; row < monJeu.tailleY; row++) {
+			for (int col = 0; col < monJeu.tailleX; col++) {
 				tabBtn[row][col].setText(monJeu.grid.UneCaseState(row, col));
-		    }	
-        }
-    }
+			}
+		}
+	}
 
 }

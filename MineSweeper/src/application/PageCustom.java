@@ -1,5 +1,6 @@
 package application;
 
+import demineur.Jeu;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -39,14 +40,20 @@ public class PageCustom {
 		//Taille du terrain
 		Label lblTaille = new Label("Taille du terrain");
 		vBox.getChildren().add(lblTaille);		
-		Slider sliderTaille = new Slider(10, 50, 20);
+		Slider sliderTaille = new Slider(10, 30, 20);
+ 		sliderTaille.setShowTickLabels(true);
+		sliderTaille.setShowTickMarks(true);
+		sliderTaille.setMajorTickUnit(5); 
 		sliderTaille.setMaxWidth(300);
 		vBox.getChildren().add(sliderTaille);
 		
 		//Densite bombe
-		Label lblDns = new Label("Taille du terrain");
+		Label lblDns = new Label("Densité bombes");
 		vBox.getChildren().add(lblDns);		
-		Slider sliderDns = new Slider(11, 23, 15);
+		Slider sliderDns = new Slider(0.05, 0.3, 0.1);
+		sliderDns.setShowTickLabels(true);
+		sliderDns.setShowTickMarks(true);
+		sliderDns.setMajorTickUnit(0.05f); 
 		sliderDns.setMaxWidth(300);
 		vBox.getChildren().add(sliderDns);
 		
@@ -77,7 +84,10 @@ public class PageCustom {
 		btnPlay.setMaxWidth(300);
 		btnPlay.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {
-		    	pStage.setScene(PageJeu.makeSceneJeu(pStage, 10, 7));
+		    	int tx=(int)sliderTaille.getValue();
+		    	float d=(float)sliderDns.getValue();
+		    	Jeu unJeu=new Jeu(tx, tx, d);
+		    	pStage.setScene(PageJeu.makeSceneJeu(pStage, unJeu));
 		    }
 		});
 		vBox.getChildren().add(btnPlay);     
