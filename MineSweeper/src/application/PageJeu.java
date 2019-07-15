@@ -1,6 +1,7 @@
 package application;
 
 import demineur.Jeu;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -76,6 +77,12 @@ public class PageJeu {
 		return hBox;
 	}// public HBox addTop()
 
+    // private class constant and some variables
+    private static final Integer STARTTIME = 15;
+    private static Timeline timeline;
+    private static Label timerLabel = new Label();
+    private static Integer timeSeconds = STARTTIME;
+    
 	public static VBox addLeft(int size) {
 		VBox vBox = new VBox();
 		vBox.setPadding(new Insets(10, 20, 10, 20));
@@ -84,18 +91,24 @@ public class PageJeu {
 		vBox.setStyle("-fx-background-color: #C0C0F0;");
 
 		Label timer = new Label("Timer : ");
+		timerLabel.setText(timeSeconds.toString());
+		// Bind the timerLabel text property to the timeSeconds property
+		//timerLabel.textProperty().bindBidirectional(timeSeconds.toString());
 		timer.setWrapText(true);
 		Label countBombe = new Label("Number of bombs found : ");
 		countBombe.setWrapText(true);
 		Label resteBombe = new Label("Bombs left : ");
 		resteBombe.setWrapText(true);
 		vBox.getChildren().add(timer);
+		vBox.getChildren().add(timerLabel);
 		vBox.getChildren().add(countBombe);
 		vBox.getChildren().add(resteBombe);
 
 		return vBox;
-	}// public VBox addLeft()
-
+	}// public VBox addLeft(int size)
+	
+	 
+	
 	public static GridPane addGrid(int size) {
 		GridPane gridPane = new GridPane();
 		gridPane.setAlignment(Pos.TOP_CENTER);
@@ -133,7 +146,7 @@ public class PageJeu {
 			}
 		}
 		return gridPane;
-	}// public GridPane addGrid()
+	}// public GridPane addGrid(int size)
 
 	public static VBox addRight(int size, Stage pStage) {
 		VBox vBox = new VBox();
@@ -174,7 +187,7 @@ public class PageJeu {
 		vBox.getChildren().add(btnBack);
 
 		return vBox;
-	}// public VBox addRight()
+	}// public VBox addRight(int size, Stage pStage)
 
 	private static void Refresh() {
 		for (int row = 0; row < monJeu.tailleY; row++) {
@@ -182,6 +195,6 @@ public class PageJeu {
 				tabBtn[row][col].setText(monJeu.grid.UneCaseState(row, col));
 			}
 		}
-	}
+	} // private static void Refresh()
 
 }

@@ -1,8 +1,5 @@
 package demineur;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Jeu {
 
 	// permet de choirir la taille de grille du jeu
@@ -33,6 +30,7 @@ public class Jeu {
 	} // public Jeu()
 
 	public void Clic(int x, int y, Boolean actionSelect) {
+
 		if (grid.nbTtBombe==0) {
 			grid.FirstClic(y, x);
 		}
@@ -43,5 +41,4 @@ public class Jeu {
 		}
 		gameOn = grid.GamePlaying();		
 	}
-
 }
