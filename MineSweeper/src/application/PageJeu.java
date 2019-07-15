@@ -156,7 +156,8 @@ public class PageJeu {
 		btnReplay.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				pStage.setScene(PageJeu.makeSceneJeu(pStage, monJeu));
+				Jeu newJeu = new Jeu(monJeu.tailleX, monJeu.tailleY, monJeu.densite);
+				pStage.setScene(PageJeu.makeSceneJeu(pStage, newJeu));
 			}
 		});
 		vBox.getChildren().add(btnReplay);
