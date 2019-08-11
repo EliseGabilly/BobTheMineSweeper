@@ -1,7 +1,6 @@
 package application;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
 import javafx.stage.Stage;
 
 public class Main extends Application {
