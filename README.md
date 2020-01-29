@@ -4,6 +4,7 @@ Voila le retour temps attendu du grand Bob, roi de l'inteligence et chef des jeu
 
 Ici Bob s'attaquera au demineur !
 
+This is a minesweeper, using JavaFx for visual graphics. Many option are still to be created, as well as the main part : Bob (make the computeur play).
 
 Idée pour continuer :
 
