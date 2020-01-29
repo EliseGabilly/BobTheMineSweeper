@@ -3,7 +3,7 @@ package application;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class MainMineSweeper extends Application {
 
 	static int lX=1000;
 	static int lY=600;

@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,7 +13,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -92,7 +90,7 @@ public class PageCustom {
 		});
 		vBox.getChildren().add(btnPlay);     
 
-		Scene s = new Scene(vBox, Main.lX, Main.lY);
+		Scene s = new Scene(vBox, MainMineSweeper.lX, MainMineSweeper.lY);
 		return s;
         
     }//public static Scene makeSceneCustom(Stage pStage) 

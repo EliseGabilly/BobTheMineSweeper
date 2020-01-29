@@ -86,7 +86,7 @@ public class PageAccueil {
 		});
 		vBox.getChildren().add(btnQuit);  
 
-		Scene s = new Scene(vBox, Main.lX, Main.lY);
+		Scene s = new Scene(vBox, MainMineSweeper.lX, MainMineSweeper.lY);
 		return s;
         
     }//public void start(Stage primaryStage)

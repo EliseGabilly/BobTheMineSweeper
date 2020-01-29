@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,7 +32,7 @@ public class PageJeu {
 
 		// creer une scene avec top,right,center,left,bottom
 		BorderPane border = new BorderPane();
-		Scene s = new Scene(border, Main.lX, Main.lY);
+		Scene s = new Scene(border, MainMineSweeper.lX, MainMineSweeper.lY);
 
 		// remplit le top avec un layout horizontal titre et btn menu
 		border.setTop(addTop(pStage));
