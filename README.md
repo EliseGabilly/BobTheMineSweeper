@@ -1,28 +1,27 @@
 ﻿# BobLeDemineur
+Here is the long awaited return of the great Bob, king of intelligence and head of the games!
 
-Voila le retour temps attendu du grand Bob, roi de l'inteligence et chef des jeux !
-
-Ici Bob s'attaquera au demineur !
+Here Bob will tackle the minesweeper!
 
 This is a minesweeper, using JavaFx for visual graphics. Many option are still to be created, as well as the main part : Bob (make the computeur play).
 
-Idée pour continuer :
+Idea to continue :
 
-	- Mode de jeu (et menu): 
-		- Classique
-		- Variation de taille
-		- Infini (cotés lié)
+	- Game mode (and menu): 
+		- Classic
+		- Size variation
+		- Infinite (linked sides)
 		- AI
-	- Affichage :
-		- Dynamique
-		- Menu pour choix de jeu
-		- Bouton mode de jeu (bombe drapeau)
+	- Display :
+		- Dynamic
+		- Menu for game choice
+		- Game mode button (flag bomb)
 
-Inteligence artificiel :
+Artificial intelligence :
 
-		- Regles basique 
-		- Dependence entre case ou test tout
+		- Basic rules 
+		- Dependency between box or test all
 		-
-		
-Aide a l'installation de JavaFX :
+
+JavaFX instalation help :
 https://o7planning.org/en/10619/install-efxclipse-into-eclipse
