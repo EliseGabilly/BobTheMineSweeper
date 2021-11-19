@@ -8,11 +8,10 @@ This is a minesweeper, using JavaFx for visual graphics. Many option are still t
 Idea to continue :
 
 	- Game mode (and menu): 
-		- Classic
-		- Size variation
 		- Infinite (linked sides)
 		- AI
 	- Display :
+		- Colors and end messages
 		- Dynamic
 		- Menu for game choice
 		- Game mode button (flag bomb)
